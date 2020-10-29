@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "dist/meest-test"
+  },
+  "targets": {
+    "meest-test": {
+      "hosting": {
+        "meest-test": [
+          "meest-test"
+        ]
+      }
+    }
+  }
+}

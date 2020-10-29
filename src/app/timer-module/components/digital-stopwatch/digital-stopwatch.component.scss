@@ -1,0 +1,54 @@
+:host {
+    display: block;
+    text-align: center;
+    padding-top: 10vh;
+    max-width: 23rem;
+    margin: 0 auto;
+
+    &>button {
+        min-width: 70px;
+        min-height: 30px;
+        margin: 0.5rem;
+    }
+
+    &>.history {
+        display: flex;
+        flex-flow: row wrap;
+        margin-top: 2rem;
+
+        &>:first-child {
+            margin-bottom: 1rem;
+        }
+
+        &>.lap {
+            width: 20%;
+            margin-bottom: 0.5rem;
+        }
+
+        &>.time {
+            width: 40%;
+        }
+    }
+
+    &>.current-lap {
+        $labelWidth: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        padding-left: $labelWidth;
+        margin-bottom: 1rem;
+        border-top: 1px solid #bababa;
+        opacity: 0.22;
+        transition: opacity 0.33s ease;
+
+        &.active {
+            opacity: 1;
+        }
+
+        &>span {
+            min-width: $labelWidth;
+            font-size: 12px;
+            color: #8b8b8b;
+        }
+    }
+}
