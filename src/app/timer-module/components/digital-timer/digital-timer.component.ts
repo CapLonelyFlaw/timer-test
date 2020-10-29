@@ -48,6 +48,7 @@ export class DigitalTimerComponent implements OnChanges, OnDestroy {
                         });
                     });
                 } else {
+                    this.chRef.detectChanges();
                     this.interval.unsubscribe();
                 }
             });
