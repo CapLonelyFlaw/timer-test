@@ -13,7 +13,7 @@ export class StopwatchService {
 
     restoreStopwatch(): StopwatchBase {
         const timerData = JSON.parse(window.localStorage.getItem('mainStopwatch'));
-        return new Stopwatch(timerData);
+        return new Stopwatch(timerData || {});
     }
 
     // return observable so we can sync stopwatch or not if needed
@@ -31,7 +31,7 @@ export class StopwatchService {
             const storageSub = fromEvent(window, 'storage')
                 .subscribe(() => {
                     const timerData = JSON.parse(window.localStorage.getItem('mainStopwatch'));
-                    stopwatch = new Stopwatch(timerData);
+                    stopwatch = new Stopwatch(timerData || {});
                     observeStopwatch();
                     s.next(stopwatch);
                 });
