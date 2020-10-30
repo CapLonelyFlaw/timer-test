@@ -20,16 +20,22 @@ export class StopwatchService {
     tabSync(stopwatch: StopwatchBase): Observable<StopwatchBase> {
         return new Observable((s) => {
             let swChangesSub = new Subscription();
+            let justUpdated = false;
             const observeStopwatch = () => {
                 swChangesSub.unsubscribe();
                 swChangesSub = merge(stopwatch.started, stopwatch.lapAdded, stopwatch.cleared, 3)
                     .subscribe(() => {
                         localStorage.setItem('mainStopwatch', JSON.stringify(stopwatch.toJson()));
+                        justUpdated = true;
                     });
             };
             observeStopwatch();
             const storageSub = fromEvent(window, 'storage')
                 .subscribe(() => {
+                    if (justUpdated) {
+                        justUpdated = false;
+                        return;
+                    }
                     const timerData = JSON.parse(window.localStorage.getItem('mainStopwatch'));
                     stopwatch = new Stopwatch(timerData || {});
                     observeStopwatch();
