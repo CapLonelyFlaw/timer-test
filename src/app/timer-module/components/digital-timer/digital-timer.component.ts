@@ -15,9 +15,7 @@ import { DummyTimer } from '../../src/timer-dummy';
 
 @Component({
     selector: 'app-digital-timer',
-    template: `
-        {{timer.time | date:'mm:ss.SS'}}
-    `,
+    template: `{{timer.time | date:'mm:ss.SS'}}`,
     styleUrls: ['digital-timer.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })

@@ -1,14 +1,9 @@
 :host {
     display: block;
     text-align: center;
-    padding-top: 10vh;
-    max-width: 23rem;
-    margin: 0 auto;
 
     &>button {
-        min-width: 70px;
-        min-height: 30px;
-        margin: 0.5rem;
+        margin: 1rem;
     }
 
     &>.history {
@@ -17,7 +12,7 @@
         margin-top: 2rem;
 
         &>:first-child {
-            margin-bottom: 1rem;
+            margin-bottom: 1rem !important;
         }
 
         &>.lap {

@@ -1,0 +1,32 @@
+button,
+input,
+textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+    outline: none;
+}
+
+button,
+input {
+    /* 1 */
+    overflow: visible;
+}
+
+button {
+    text-transform: none;
+}
+
+button[disabled] {
+    text-transform: none;
+    cursor: not-allowed;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+    border: none;
+    -webkit-appearance: none;
+}

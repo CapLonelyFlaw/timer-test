@@ -6,19 +6,19 @@ import { StopwatchBase } from '../../src/timer-base';
 @Component({
     selector: 'app-digital-stopwatch',
     template: `
-        <app-digital-timer class="font-24" [timer]="timer.totalTimer"></app-digital-timer>
+        <app-digital-timer class="large" [timer]="timer.totalTimer"></app-digital-timer>
         <div class="current-lap" [ngClass]="timer.lapNumber > 1 ? 'active' : ''">
-            <app-digital-timer class="font-20" [timer]="timer.lapTimer"></app-digital-timer>
+            <app-digital-timer class="medium" [timer]="timer.lapTimer"></app-digital-timer>
             <span [attr.inv]="timer.lapNumber <= 1">lap {{timer.lapNumber}}</span>
         </div>
 
         <ng-container *ngIf="timer.isRunning; else startRef">
-        <button (click)="timer.lap()">LAP</button>
-        <button (click)="timer.stop()">STOP</button>
+            <button class="round primary" (click)="timer.lap()">LAP</button>
+            <button class="round error" (click)="timer.stop()">STOP</button>
         </ng-container>
         <ng-template #startRef>
-        <button (click)="timer.clear()" [disabled]="!timer.isDirty">RESET</button>
-        <button (click)="timer.start()">START</button>
+            <button class="round alert" (click)="timer.clear()" [disabled]="!timer.isDirty">RESET</button>
+            <button class="round success" (click)="timer.start()">START</button>
         </ng-template>
 
         <div class="history" *ngIf="timer.laps.length">
@@ -26,9 +26,9 @@ import { StopwatchBase } from '../../src/timer-base';
             <span class="time">TIME</span>
             <span class="time">TOTAL TIME</span>
             <ng-container *ngFor="let lap of timer.laps">
-                <span class="lap">{{lap.number}}</span>
-                <span class="time">{{lap.time | date:'mm:ss.SS'}}</span>
-                <span class="time">{{lap.total | date:'mm:ss.SS'}}</span>
+                <span class="lap font-clockicons">{{lap.number}}</span>
+                <span class="time font-clockicons">{{lap.time | date:'mm:ss.SS'}}</span>
+                <span class="time font-clockicons">{{lap.total | date:'mm:ss.SS'}}</span>
             </ng-container>
         </div>
     `,

@@ -1,13 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import './styles/normalize';
+@import './styles/awesome-font';
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 
-.font-24 {
-    font-size: 24px;
-}
-
-.font-20 {
-    font-size: 20px;
+@font-face {
+    font-family: 'clockicons';
+    src: url('/assets/fonts/clockicons.woff2') format('woff2'),
+        url('/assets/fonts/clockicons.woff') format('woff');
 }
 
 *[inv=true] {
@@ -16,4 +16,56 @@
 
 body {
     font-family: 'Orbitron', sans-serif;
+    margin: 1rem;
+}
+
+.font-clockicons {
+    font-family: 'clockicons', 'Orbitron', sans-serif;
+}
+
+button.round {
+    font-size: 12px;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    border: none;
+    border-radius: 50%;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    button:hover {
+        cursor: pointer;
+    }
+}
+
+button[disabled] {
+    opacity: 0.5;
+}
+
+button.icon {
+    color: #a9a9a9;
+    background-color: #fff;
+    font-size: 12px;
+    width: 40px;
+    height: 30px;
+}
+
+button.success {
+    background: #94c339;
+    color: #fff;
+}
+
+button.primary {
+    background: #0090dd;
+    color: #fff;
+}
+
+button.alert {
+    background: #fbad10;
+    color: #fff;
+}
+
+button.error {
+    background: #EF6262;
+    color: #fff;
 }

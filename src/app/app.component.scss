@@ -1,0 +1,14 @@
+:host {
+    display: block;
+    max-width: 23rem;
+    margin: 0 auto;
+
+    &>button.icon {
+        display: block;
+        margin-left: auto;
+    }
+
+    &>app-digital-stopwatch {
+        margin-top: 10vh;
+    }
+}
