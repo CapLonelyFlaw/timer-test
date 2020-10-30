@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "dist/meest-test"
+    "default": "meest-test"
   },
   "targets": {
     "meest-test": {
