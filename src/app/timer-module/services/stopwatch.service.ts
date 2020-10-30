@@ -25,7 +25,7 @@ export class StopwatchService {
                 swChangesSub.unsubscribe();
                 swChangesSub = merge(stopwatch.started, stopwatch.lapAdded, stopwatch.cleared, 3)
                     .subscribe(() => {
-                        localStorage.setItem('mainStopwatch', JSON.stringify(stopwatch.toJson()));
+                        localStorage.setItem('mainTimer', JSON.stringify(stopwatch.toJson()));
                         justUpdated = true;
                     });
             };
@@ -36,7 +36,7 @@ export class StopwatchService {
                         justUpdated = false;
                         return;
                     }
-                    const timerData = JSON.parse(window.localStorage.getItem('mainStopwatch'));
+                    const timerData = JSON.parse(window.localStorage.getItem('mainTimer'));
                     stopwatch = new Stopwatch(timerData || {});
                     observeStopwatch();
                     s.next(stopwatch);

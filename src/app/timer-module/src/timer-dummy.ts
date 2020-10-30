@@ -28,6 +28,6 @@ export class DummyTimer extends TimerBase {
     }
 
     toJson(): any {
-        return {};
+        return null;
     }
 }
