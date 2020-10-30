@@ -11,6 +11,11 @@ export class StopwatchService {
         return new Stopwatch();
     }
 
+    restoreStopwatch(): StopwatchBase {
+        const timerData = JSON.parse(window.localStorage.getItem('mainStopwatch'));
+        return new Stopwatch(timerData);
+    }
+
     // return observable so we can sync stopwatch or not if needed
     tabSync(stopwatch: StopwatchBase): Observable<StopwatchBase> {
         return new Observable((s) => {

@@ -22,7 +22,7 @@ export class AppComponent {
 
     constructor(stopwatchService: StopwatchService,
                 @Inject(DOCUMENT) private document: HTMLDocument) {
-        this.timer = stopwatchService.createStopwatch();
+        this.timer = stopwatchService.restoreStopwatch();
         stopwatchService.tabSync(this.timer).subscribe((timer) => {
             this.timer = timer;
         });
