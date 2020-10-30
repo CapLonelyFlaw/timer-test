@@ -4,6 +4,8 @@ import { fromEvent, merge, Observable, Subscription } from 'rxjs';
 import { Stopwatch } from '../src/stopwatch';
 import { StopwatchBase } from '../src/timer-base';
 
+const TIMER_KEY = 'mainTimer';
+
 @Injectable()
 export class StopwatchService {
 
@@ -12,7 +14,7 @@ export class StopwatchService {
     }
 
     restoreStopwatch(): StopwatchBase {
-        const timerData = JSON.parse(window.localStorage.getItem('mainStopwatch'));
+        const timerData = JSON.parse(window.localStorage.getItem(TIMER_KEY));
         return new Stopwatch(timerData || {});
     }
 
@@ -25,7 +27,7 @@ export class StopwatchService {
                 swChangesSub.unsubscribe();
                 swChangesSub = merge(stopwatch.started, stopwatch.lapAdded, stopwatch.cleared, 3)
                     .subscribe(() => {
-                        localStorage.setItem('mainTimer', JSON.stringify(stopwatch.toJson()));
+                        localStorage.setItem(TIMER_KEY, JSON.stringify(stopwatch.toJson()));
                         justUpdated = true;
                     });
             };
@@ -36,7 +38,7 @@ export class StopwatchService {
                         justUpdated = false;
                         return;
                     }
-                    const timerData = JSON.parse(window.localStorage.getItem('mainTimer'));
+                    const timerData = JSON.parse(window.localStorage.getItem(TIMER_KEY));
                     stopwatch = new Stopwatch(timerData || {});
                     observeStopwatch();
                     s.next(stopwatch);
